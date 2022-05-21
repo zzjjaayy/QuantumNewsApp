@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">QuantumNewsApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create_an_account_title">Create an account</string>
+    <string name="email_hint">johndoe@gmail.com</string>
+    <string name="email_title">Email</string>
+    <string name="name_hint">John Doe</string>
+    <string name="name_title">Name</string>
+    <string name="phone_hint">1234567890</string>
+    <string name="phone_title">Contact No.</string>
+    <string name="pass_title">Password</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="login_title">SignIn into your account</string>
+    <string name="social_login_title">OR Login with</string>
+
+<!--    Facebook -->
+    <string name="facebook_app_id">319872263614966</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">56789</string>
+    <string name="search">Search News</string>
+    <string name="logout">Logout</string>
+</resources>

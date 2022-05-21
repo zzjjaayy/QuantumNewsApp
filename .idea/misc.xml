@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Jayra/Code/AndroidStudioProjects/Learners/QuantumNewsApp/app/src/main/res/drawable/auth_btn_bg.xml" value="0.1615" />
+        <entry key="..\:/Users/Jayra/Code/AndroidStudioProjects/Learners/QuantumNewsApp/app/src/main/res/drawable/splash_logo_container.xml" value="0.1615" />
+        <entry key="..\:/Users/Jayra/Code/AndroidStudioProjects/Learners/QuantumNewsApp/app/src/main/res/drawable/tab_indicator.xml" value="0.1615" />
+        <entry key="..\:/Users/Jayra/Code/AndroidStudioProjects/Learners/QuantumNewsApp/app/src/main/res/layout/activity_main.xml" value="0.29583333333333334" />
+        <entry key="..\:/Users/Jayra/Code/AndroidStudioProjects/Learners/QuantumNewsApp/app/src/main/res/layout/activity_news.xml" value="0.29583333333333334" />
+        <entry key="..\:/Users/Jayra/Code/AndroidStudioProjects/Learners/QuantumNewsApp/app/src/main/res/layout/fragment_auth.xml" value="0.3098958333333333" />
+        <entry key="..\:/Users/Jayra/Code/AndroidStudioProjects/Learners/QuantumNewsApp/app/src/main/res/layout/fragment_login.xml" value="0.2564814814814815" />
+        <entry key="..\:/Users/Jayra/Code/AndroidStudioProjects/Learners/QuantumNewsApp/app/src/main/res/layout/fragment_signup.xml" value="0.3098958333333333" />
+        <entry key="..\:/Users/Jayra/Code/AndroidStudioProjects/Learners/QuantumNewsApp/app/src/main/res/layout/news_item.xml" value="0.3098958333333333" />
+        <entry key="..\:/Users/Jayra/Code/AndroidStudioProjects/Learners/QuantumNewsApp/app/src/main/res/menu/news_menu.xml" value="0.3098958333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

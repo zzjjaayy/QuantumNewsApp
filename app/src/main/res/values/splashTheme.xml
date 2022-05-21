@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_logo_container</item>
+        <item name="postSplashScreenTheme">@style/Theme.QuantumNewsApp</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
+    </style>
+</resources>
