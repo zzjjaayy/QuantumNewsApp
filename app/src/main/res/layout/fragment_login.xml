@@ -68,6 +68,16 @@
                 app:layout_constraintTop_toBottomOf="@id/pass_title" />
 
             <TextView
+                android:id="@+id/reset_pass"
+                android:text="Forgot Password?"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/pass_edit"
+                android:theme="@style/FormTitleTheme"
+                android:textSize="14sp"
+                android:gravity="end"/>
+
+            <TextView
                 android:id="@+id/social_login_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -5,13 +5,13 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.text.HtmlCompat
+import androidx.fragment.app.Fragment
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -25,6 +25,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.GoogleAuthProvider
 import com.jay.quantumnewsapp.auth.MainActivity
 import com.jay.quantumnewsapp.databinding.FragmentLoginBinding
@@ -80,6 +81,27 @@ class LoginFragment : Fragment() {
                     showSnackBar("Please fill all fields properly!")
                 } else {
                     loginUserWithMailPassword()
+                }
+            }
+
+            resetPass.setOnClickListener {
+                if(mailEdit.hasErrorOrEmpty()) {
+                    Toast.makeText(requireContext(),
+                        "Please enter email id to reset password", Toast.LENGTH_SHORT).show()
+                } else {
+                    auth.sendPasswordResetEmail(binding.mailEdit.text.toString())
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                showSnackBar("Reset password email sent!")
+                            } else {
+                                Log.d(TAG, "Error while resseting password -> ${task.exception}" )
+                                if(task.exception is FirebaseAuthInvalidUserException) {
+                                    showSnackBar("User not found, try creating a new account!")
+                                } else {
+                                    showSnackBar("Something went wrong while resetting password!")
+                                }
+                            }
+                        }
                 }
             }
         }

@@ -1,22 +1,20 @@
 package com.jay.quantumnewsapp.news
 
 import android.content.Intent
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
-import com.jay.quantumnewsapp.auth.MainActivity
 import com.jay.quantumnewsapp.R
+import com.jay.quantumnewsapp.auth.MainActivity
 import com.jay.quantumnewsapp.databinding.ActivityNewsBinding
 import com.jay.quantumnewsapp.utils.TAG
 import com.jay.quantumnewsapp.utils.openWebpage
@@ -53,6 +51,15 @@ class NewsActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             }
         }
         binding.progressBar.isVisible = true
+
+        onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if(!searchView.isIconified) {
+                    searchView.isIconified = true
+                    newsAdapter.submitList(viewModel.topHeadlines)
+                } else this@NewsActivity.finish()
+            }
+        })
     }
 
     private fun confirmLogout() {
@@ -72,10 +79,10 @@ class NewsActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
      * MENU AND SEARCH OPTIONS
      */
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.news_menu, menu)
 
-        val search = menu?.findItem(R.id.menu_search) ?: run {
+        val search = menu.findItem(R.id.menu_search) ?: run {
             return false
         }
         searchView = (search.actionView as? SearchView)!!
@@ -94,11 +101,6 @@ class NewsActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextSubmit(p0: String?): Boolean {
-        // nothing
-        return true
-    }
-
-    override fun onQueryTextChange(p0: String?): Boolean {
         p0?.let {
             viewModel.searchNews(p0) {
                 Log.d(TAG, "onCreate: There are ${it?.size} news items!")
@@ -113,6 +115,11 @@ class NewsActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             }
             binding.progressBar.isVisible = true
         }
+        return true
+    }
+
+    override fun onQueryTextChange(p0: String?): Boolean {
+        // do nothing
         return true
     }
 }
