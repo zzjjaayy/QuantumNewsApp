@@ -19,3 +19,7 @@ Take home assignment from Quantum Innovations
 - Splash compat library →
     - Recently shifted to release candidate, this library makes the sweet sweet Android 12 splash screens available for older devices.
 - Other jetpack libraries like Lifecycle component or kotlin libraries like coroutines.
+
+--
+Link to demo video recording -> https://drive.google.com/file/d/18K6jTBnoCpKQVvscEm8sglJlEYM7heiG/view?usp=sharing
+This link doesn't cover all edge cases and functionality but only the main ones.
