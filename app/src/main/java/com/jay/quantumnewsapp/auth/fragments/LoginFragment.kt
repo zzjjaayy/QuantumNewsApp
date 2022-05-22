@@ -85,24 +85,7 @@ class LoginFragment : Fragment() {
             }
 
             resetPass.setOnClickListener {
-                if(mailEdit.hasErrorOrEmpty()) {
-                    Toast.makeText(requireContext(),
-                        "Please enter email id to reset password", Toast.LENGTH_SHORT).show()
-                } else {
-                    auth.sendPasswordResetEmail(binding.mailEdit.text.toString())
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                showSnackBar("Reset password email sent!")
-                            } else {
-                                Log.d(TAG, "Error while resseting password -> ${task.exception}" )
-                                if(task.exception is FirebaseAuthInvalidUserException) {
-                                    showSnackBar("User not found, try creating a new account!")
-                                } else {
-                                    showSnackBar("Something went wrong while resetting password!")
-                                }
-                            }
-                        }
-                }
+                resetPassword()
             }
         }
 
@@ -112,6 +95,27 @@ class LoginFragment : Fragment() {
             .requestEmail()
             .build()
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
+    }
+
+    private fun resetPassword() {
+        if(binding.mailEdit.hasErrorOrEmpty()) {
+            Toast.makeText(requireContext(),
+                "Please enter email id to reset password", Toast.LENGTH_SHORT).show()
+        } else {
+            auth.sendPasswordResetEmail(binding.mailEdit.text.toString())
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        showSnackBar("Reset password email sent!")
+                    } else {
+                        Log.d(TAG, "Error while resetting password -> ${task.exception}" )
+                        if(task.exception is FirebaseAuthInvalidUserException) {
+                            showSnackBar("User not found, try creating a new account!")
+                        } else {
+                            showSnackBar("Something went wrong while resetting password!")
+                        }
+                    }
+                }
+        }
     }
 
     private fun showSnackBar(message: String) {
@@ -204,12 +208,10 @@ class LoginFragment : Fragment() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
                     showSnackBar("Google sign in successful for ${auth.currentUser?.displayName}")
                     (activity as MainActivity).goToHomePage()
                 } else {
-                    // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                     showSnackBar("Google Sign in failed! Please try again later!")
                 }

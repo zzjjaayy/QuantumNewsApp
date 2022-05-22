@@ -14,11 +14,12 @@
     <string name="login">Login</string>
     <string name="login_title">SignIn into your account</string>
     <string name="social_login_title">OR Login with</string>
+    <string name="ts_source_template">%s via %s</string>
+    <string name="search">Search News</string>
+    <string name="logout">Logout</string>
 
 <!--    Facebook -->
     <string name="facebook_app_id">319872263614966</string>
     <string name="fb_login_protocol_scheme">fb1234</string>
     <string name="facebook_client_token">56789</string>
-    <string name="search">Search News</string>
-    <string name="logout">Logout</string>
 </resources>

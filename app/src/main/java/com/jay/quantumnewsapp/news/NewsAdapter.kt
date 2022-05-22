@@ -17,7 +17,8 @@ class NewsAdapter(private val onNewsClicked: (NewsItem) -> Unit) :
     class NewsViewHolder(private val binding: NewsItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(news: NewsItem) {
             binding.apply {
-                newsTsSource.text = dateToTimeFormat(news.publishedAt) + " " + news.source.name
+                newsTsSource.text = newsTsSource.context
+                    .getString(R.string.ts_source_template, dateToTimeFormat(news.publishedAt), news.source.name)
                 newsTitle.text = news.title
                 newsDesc.text = news.description
                 Glide.with(binding.newsImage).load(news.urlToImage)
